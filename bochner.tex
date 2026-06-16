@@ -1,0 +1,169 @@
+documentclass[12pt,a4paper,UTF8]{ctexart}
+\usepackage{amsmath,amsthm,amssymb,mathtools,enumitem}
+\usepackage{mathrsfs} % 用于花体符号
+
+% 自定义定理环境
+\newtheorem{theorem}{定理}[section]
+\newtheorem{remark}{备注}
+
+% 自定义命令：统一符号格式
+\newcommand{\norm}[1]{\left\| #1 \right\|} % 范数
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle} % 内积/配对
+\newcommand{\Lp}[3][X]{\mathrm{L}^{#2}(#1;#3)} % 博赫纳Lp空间：默认定义域为X，用法\Lp{p}{E}
+\newcommand{\dualp}[2]{\inner{#1}{#2}_{E',E}} % E'与E的对偶配对
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}} % 数域
+
+\begin{document}
+
+\title{Théorème 1.4.1 博赫纳空间对偶等距同构定理证明}
+\author{}
+\date{}
+\maketitle
+
+\section{前置符号约定}
+固定以下基础对象，所有函数默认模去几乎处处相等的等价类：
+\begin{itemize}[itemsep=0pt]
+    \item 数域$\K = \R$或$\C$；
+    \item $(X, \mathcal{A}, \mu)$：$\sigma$-有限测度空间；
+    \item $1 \leq p < +\infty$，共轭指标$p'$满足$\frac{1}{p} + \frac{1}{p'} = 1$（$p=1$时$p'=+\infty$）；
+    \item $E$：$\K$上的巴拿赫空间，其连续对偶空间$E'$可分，$E'$配备算子范数$\norm{\cdot}_{E'}$；
+    \item 对偶配对$\dualp{g}{e} = g(e)$，满足柯西不等式$\left|\dualp{g}{e}\right| \leq \norm{g}_{E'}\norm{e}_E$对所有$g\in E', e\in E$成立；
+    \item $\Lp{p}{E}$：$X$到$E$的博赫纳可测函数构成的巴拿赫空间，范数定义为：
+    $$
+    \norm{f}_{\Lp{p}{E}} = \begin{cases}
+        \displaystyle\left( \int_X \norm{f(x)}_E^p d\mu(x) \right)^{1/p}, & 1\leq p<+\infty, \\
+        \displaystyle\operatorname{esssup}_{x\in X} \norm{f(x)}_E, & p=+\infty.
+    \end{cases}
+    $$
+\end{itemize}
+
+\section{定理原文（法语）}
+\begin{theorem}[Théorème 1.4.1]
+Si $(X,\mathcal{A},\mu)$ est un espace mesuré $\sigma$-fini, $1\leq p < +\infty$ et $E$ est un espace de Banach dont le dual $E'$ est séparable, alors l'application
+$$
+T: \begin{cases}
+\Lp{p'}{E'} \to \left( \Lp{p}{E} \right)' \\
+g \mapsto T_g \quad \text{définie par } T_g(f) = \int_X \dualp{g(x)}{f(x)} d\mu(x)
+\end{cases}
+$$
+est un isomorphisme isométrique.
+\end{theorem}
+
+\section{完整证明}
+我们需要证明$T$是**线性、单射、满射且范数保持**的等距同构，分五步完成：
+\begin{proof}
+\subsection{步骤1：$T$是良定义的有界线性映射}
+首先验证对任意$g\in \Lp{p'}{E'}$，$T_g$是$\left(\Lp{p}{E}\right)'$中的合法有界线性泛函：
+\begin{enumerate}[label=(\arabic*), itemsep=0pt]
+    \item 线性性：对任意$f_1,f_2\in \Lp{p}{E}$，$\lambda,\mu\in\K$，由积分和对偶配对的线性性：
+    $$
+    T_g(\lambda f_1 + \mu f_2) = \int_X \dualp{g(x)}{\lambda f_1(x) + \mu f_2(x)} d\mu(x) = \lambda T_g(f_1) + \mu T_g(f_2),
+    $$
+    因此$T_g$是线性泛函。
+    \item 有界性：结合柯西不等式与赫尔德不等式：
+    \begin{itemize}
+        \item 当$1<p<+\infty$时：
+        $$
+        \left| T_g(f) \right| \leq \int_X \left|\dualp{g(x)}{f(x)}\right| d\mu(x) \leq \int_X \norm{g(x)}_{E'} \norm{f(x)}_E d\mu(x) \leq \norm{g}_{\Lp{p'}{E'}} \norm{f}_{\Lp{p}{E}};
+        $$
+        \item 当$p=1$（对应$p'=+\infty$）时：
+        $$
+        \left| T_g(f) \right| \leq \int_X \norm{g(x)}_{E'} \norm{f(x)}_E d\mu(x) \leq \norm{g}_{\Lp{\infty}{E'}} \int_X \norm{f(x)}_E d\mu(x) = \norm{g}_{\Lp{\infty}{E'}} \norm{f}_{\Lp{1}{E}}.
+        $$
+    \end{itemize}
+    因此$\norm{T_g}_{\left(\Lp{p}{E}\right)'} \leq \norm{g}_{\Lp{p'}{E'}}$，$T_g$是有界线性泛函，$T$的良定义性得证。
+\end{enumerate}
+
+\subsection{步骤2：$T$是等距映射，即$\norm{T_g} = \norm{g}_{\Lp{p'}{E'}}$}
+由步骤1已有上界，只需证明下界$\norm{T_g} \geq \norm{g}_{\Lp{p'}{E'}}$即可。
+首先处理$\mu(X)<+\infty$的有限测度情况：
+\begin{enumerate}[label=(\arabic*), itemsep=0pt]
+    \item 当$1<p<+\infty$时：
+    由本质确界的定义，对任意$\varepsilon>0$，存在可测集$A\subset X$满足$\mu(A)>0$，且对所有$x\in A$有$\norm{g(x)}_{E'} > (1-\varepsilon)\norm{g}_{\Lp{p'}{E'}}$。
+    对每个$x\in A$，由哈恩-巴拿赫定理，存在单位向量$f_x\in E$（$\norm{f_x}_E=1$）使得$\dualp{g(x)}{f_x} = \norm{g(x)}_{E'}$。构造$E$-值函数：
+    $$
+    f(x) = \begin{cases}
+    \norm{g(x)}_{E'}^{p'-1} f_x, & x\in A, \\
+    0, & x\notin A.
+    \end{cases}
+    $$
+    由于$E'$可分，$g$是博赫纳可测的，因此$f$也是博赫纳可测的。计算$f$的$L^p$范数：
+    $$
+    \norm{f}_{\Lp{p}{E}} = \left( \int_A \norm{\norm{g(x)}_{E'}^{p'-1} f_x}_E^p d\mu(x) \right)^{1/p} = \left( \int_A \norm{g(x)}_{E'}^{p(p'-1)} d\mu(x) \right)^{1/p}.
+    $$
+    由共轭指标关系$p(p'-1) = p'$，因此：
+    $$
+    \norm{f}_{\Lp{p}{E}} = \left( \int_A \norm{g(x)}_{E'}^{p'} d\mu(x) \right)^{1/p}.
+    $$
+    此时计算$T_g(f)$：
+    $$
+    T_g(f) = \int_A \dualp{g(x)}{\norm{g(x)}_{E'}^{p'-1} f_x} d\mu(x) = \int_A \norm{g(x)}_{E'}^{p'} d\mu(x).
+    $$
+    因此：
+    $$
+    \frac{\left| T_g(f) \right|}{\norm{f}_{\Lp{p}{E}}} = \left( \int_A \norm{g(x)}_{E'}^{p'} d\mu(x) \right)^{1/p'} \geq (1-\varepsilon) \norm{g}_{\Lp{p'}{E'}}.
+    $$
+    令$\varepsilon\to 0^+$，可得$\norm{T_g} \geq \norm{g}_{\Lp{p'}{E'}}$。
+
+    \item 当$p=1$（对应$p'=+\infty$）时：
+    对任意$\varepsilon>0$，取可测集$A\subset X$满足$\mu(A)>0$，且对所有$x\in A$有$\norm{g(x)}_{E'} > \norm{g}_{\Lp{\infty}{E'}} - \varepsilon$。构造$f(x) = f_x \chi_A(x)$，其中$f_x\in E$满足$\norm{f_x}_E=1$且$\dualp{g(x)}{f_x}=\norm{g(x)}_{E'}$，则$\norm{f}_{\Lp{1}{E}} = \mu(A)$，且：
+    $$
+    T_g(f) = \int_A \norm{g(x)}_{E'} d\mu(x) \geq \left( \norm{g}_{\Lp{\infty}{E'}} - \varepsilon \right) \mu(A).
+    $$
+    因此：
+    $$
+    \frac{\left| T_g(f) \right|}{\norm{f}_{\Lp{1}{E}}} \geq \norm{g}_{\Lp{\infty}{E'}} - \varepsilon,
+    $$
+    令$\varepsilon\to 0^+$，可得$\norm{T_g} \geq \norm{g}_{\Lp{\infty}{E'}}$。
+\end{enumerate}
+
+接下来推广到$\sigma$-有限测度的情况：将$X$分解为可数个互不相交的有限测度可测集的并$X = \bigcup_{n=1}^\infty X_n$，令$g_n = g \cdot \chi_{X_n}$，则$\norm{g_n}_{\Lp{p'}{E'}} \to \norm{g}_{\Lp{p'}{E'}}$，且由有限测度情况的结论$\norm{T_{g_n}} = \norm{g_n}_{\Lp{p'}{E'}}$。由于$T_{g_n}$逐点收敛到$T_g$，由泛函范数的下半连续性，$\norm{T_g} \geq \lim_{n\to\infty} \norm{T_{g_n}} = \norm{g}_{\Lp{p'}{E'}}$，等距性得证。
+
+\subsection{步骤3：$T$是单射}
+若$T_g = 0$，即对所有$f\in \Lp{p}{E}$都有$T_g(f)=0$。由等距性，$\norm{g}_{\Lp{p'}{E'}} = \norm{T_g} = 0$，因此$g$几乎处处为0，即$T$是单射。
+
+\subsection{步骤4：$T$是满射，即任意$\phi\in\left(\Lp{p}{E}\right)'$都存在$g\in\Lp{p'}{E'}$使得$\phi=T_g$}
+首先处理有限测度情况：
+对任意可测集$A\subset X$，定义映射$\phi_A: E\to\K$为$\phi_A(e) = \phi(e \cdot \chi_A)$，其中$e\cdot\chi_A$是取值为$e$、支撑在$A$上的常值函数。显然$\phi_A$是线性的，且：
+$$
+\left| \phi_A(e) \right| \leq \norm{\phi} \cdot \norm{e \cdot \chi_A}_{\Lp{p}{E}} = \norm{\phi} \cdot \norm{e}_E \cdot \mu(A)^{1/p},
+$$
+因此$\phi_A \in E'$，且$\norm{\phi_A}_{E'} \leq \norm{\phi} \cdot \mu(A)^{1/p}$。
+
+对任意$E$-值简单函数$s(x) = \sum_{i=1}^m e_i \chi_{A_i}(x)$（$A_i$互不相交，$e_i\in E$），有：
+$$
+\phi(s) = \sum_{i=1}^m \phi_{A_i}(e_i) = \int_X \dualp{ \sum_{i=1}^m \phi_{A_i} \chi_{A_i}(x) }{ s(x) } d\mu(x).
+$$
+令$s_g(x) = \sum_{i=1}^m \phi_{A_i} \chi_{A_i}(x)$，这是$E'$-值简单函数，由步骤2的等距性：
+$$
+\left| \phi(s) \right| \leq \norm{\phi} \cdot \norm{s}_{\Lp{p}{E}} \implies \norm{s_g}_{\Lp{p'}{E'}} \leq \norm{\phi}.
+$$
+
+由于$E'$可分，支撑在有限测度集上的$E'$-值简单函数在$\Lp{p'}{E'}$中稠密。对任意$f\in\Lp{p}{E}$，取简单函数列$\{s_n\}$满足$s_n \to f$在$\Lp{p}{E}$中收敛，则对应的$\{s_{g,n}\}$是$\Lp{p'}{E'}$中的柯西列：
+$$
+\norm{s_{g,n} - s_{g,m}}_{\Lp{p'}{E'}} = \norm{T_{s_{g,n} - s_{g,m}}} = \sup_{\norm{f}_{\Lp{p}{E}}\leq1} \left| T_{s_{g,n}-s_{g,m}}(f) \right| \leq \norm{\phi} \cdot \norm{s_n - s_m}_{\Lp{p}{E}} \to 0, \quad n,m\to\infty.
+$$
+由$\Lp{p'}{E'}$的完备性（因$E'$是巴拿赫空间），存在极限$g\in\Lp{p'}{E'}$，且$\norm{g}_{\Lp{p'}{E'}} \leq \norm{\phi}$。此时对所有$f\in\Lp{p}{E}$：
+$$
+T_g(f) = \int_X \dualp{g(x)}{f(x)} d\mu(x) = \lim_{n\to\infty} \int_X \dualp{s_{g,n}(x)}{s_n(x)} d\mu(x) = \lim_{n\to\infty} \phi(s_n) = \phi(f),
+$$
+即$\phi = T_g$。
+
+推广到$\sigma$-有限测度：将$X$分解为$\bigcup_{n=1}^\infty X_n$（每个$X_n$测度有限且互不相交），对每个$X_n$构造对应的$g_n\in\Lp{p'}{X_n;E'}$，拼接得到全局的$g(x) = g_n(x)$当$x\in X_n$，显然$g\in\Lp{p'}{E'}$且满足$\phi=T_g$，满射性得证。
+
+\subsection{步骤5：结论}
+$T$是线性、单射、满射的等距映射，因此是等距同构，定理得证。
+\end{proof}
+
+\section{备注（对应原文Remarque）}
+\begin{remark}
+$E'$可分的条件不是冗余的：当$E'$不可分时，该同构不成立。例如取$E = L^1([0,1])$，其对偶$E' = L^\infty([0,1])$是不可分巴拿赫空间，此时有：
+$$
+L^1(X; L^1(Y)) \cong L^1(X\times Y), \quad \text{但} \quad L^\infty(X; L^\infty(Y)) \not\cong L^\infty(X\times Y).
+$$
+而标量值情况有$(L^1(X\times Y))' = L^\infty(X\times Y)$，因此$(L^1(X; L^1(Y)))' \not\cong L^\infty(X; L^\infty(Y))$，即上述对偶同构不成立，验证了$E'$可分的必要性。
+\end{remark}
+
+\end{document}
