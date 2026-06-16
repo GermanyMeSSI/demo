@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.23)  16 JUN 2026 21:55
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.23)  16 JUN 2026 21:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -822,8 +822,7 @@ Package fontspec Info:
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Microsoft
 (fontspec)             YaHei/BI/OT:script=hani;language=dflt;"
 
-
-No file frechet_recursion.aux.
+ (./frechet_recursion.aux)
 \openout1 = `frechet_recursion.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -846,6 +845,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -881,11 +881,9 @@ LaTeX Font Info:    ... okay on input line 35.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 35.
+(./frechet_recursion.out) (./frechet_recursion.out)
 \@outlinefile=\write5
 \openout5 = `frechet_recursion.out'.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 35.
@@ -929,7 +927,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 35.
-(d:/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
+ (d:/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (d:/texlive/2025/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
 Dictionary: translator-bibliography-dictionary, Language: English 
@@ -1002,34 +1000,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  TU/lmss/b/n --> TU/lmss/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/b/n --> TU/lmtt/b/n on input line 35.
-
-No file frechet_recursion.nav.
-
+ (./frechet_recursion.nav)
 
 [1
 
-]
-No file frechet_recursion.toc.
-
-
-[2
-
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
+] (./frechet_recursion.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (d:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
  (d:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 70.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 4.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <7> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 70.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 4.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <5> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 70.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 4.
+)
 
+[2
+
+]
 
 LaTeX Font Warning: Font shape `TU/MicrosoftYaHei(0)/m/it' undefined
 (Font)              using `TU/MicrosoftYaHei(0)/m/n' instead on input line 70.
@@ -1165,25 +1159,16 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `frechet_recursion.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `frechet_recursion.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  2648BBFAF87ED357C13BBA8950451B54;636.
+Package rerunfilecheck Info: File `frechet_recursion.out' has not changed.
+(rerunfilecheck)             Checksum: 2648BBFAF87ED357C13BBA8950451B54;636.
  ) 
 Here is how much of TeX's memory you used:
- 31066 strings out of 475796
- 709017 string characters out of 5774033
- 1059760 words of memory out of 5000000
- 53354 multiletter control sequences out of 15000+600000
+ 31175 strings out of 475796
+ 710729 string characters out of 5774033
+ 1061724 words of memory out of 5000000
+ 53453 multiletter control sequences out of 15000+600000
  570729 words of font info for 134 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 128i,15n,123p,443b,898s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,123p,443b,899s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on frechet_recursion.pdf (21 pages).
